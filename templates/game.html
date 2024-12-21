@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SMASH Game</title>
+</head>
+<body>
+    {% if smash %}
+        <h1>SMASH! You were hit by another car. Game Over!</h1>
+    {% elif finish %}
+        <h1>Finish! You completed the race in {{ time_elapsed }} seconds.</h1>
+    {% endif %}
+
+    {% if not game_over %}
+        <h1>Game in Progress</h1>
+        <p>Time Elapsed: {{ time_elapsed }}</p>
+        <p>Miles to Go: {{ total_distance }}</p>
+        <p>Speed: {{ mph }}</p>
+        <p>Position: {{ position }}</p>
+        <form method="POST">
+            <label for="move">Enter your move (1-8):</label>
+            <input type="number" name="move" id="move" min="1" max="8" required>
+            <button type="submit">Submit</button>
+        </form>
+    {% else %}
+        <a href="/">Play Again</a>
+    {% endif %}
+</body>
+</html>
